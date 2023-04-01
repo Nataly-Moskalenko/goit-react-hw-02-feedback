@@ -6,9 +6,8 @@ export default function Statistics({
   positivePercentage,
 }) {
   return (
-    <section>
-      <h2>Statictics</h2>
-      <p>No feedback given</p>
+    <div>
+      <h2>Statictics</h2>     
       <ul>
         <li>Good: {good ? good : 0}</li>
         <li>Neutral: {neutral ? neutral : 0}</li>
@@ -18,6 +17,6 @@ export default function Statistics({
           Positive feedback: {positivePercentage ? positivePercentage : 0}%
         </li>
       </ul>
-    </section>
+    </div>
   );
 }
