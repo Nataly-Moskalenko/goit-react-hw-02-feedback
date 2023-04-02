@@ -11,25 +11,33 @@ export class App extends Component {
     bad: 0,
   };
 
-  handleIncrementGood = () => {
+  onLeaveFeedback = (option) => {    
     this.setState(state => {
       return {
-        good: state.good + 1,
+        [option]: state[option] + 1,
       };
     });
   };
 
-  handleIncrementNeutral = () => {
-    this.setState(state => ({
-      neutral: state.neutral + 1,
-    }));
-  };
+  // handleIncrementGood = () => {
+  //   this.setState(state => {
+  //     return {
+  //       good: state.good + 1,
+  //     };
+  //   });
+  // };
 
-  handleIncrementBad = () => {
-    this.setState(state => ({
-      bad: state.bad + 1,
-    }));
-  };
+  // handleIncrementNeutral = () => {
+  //   this.setState(state => ({
+  //     neutral: state.neutral + 1,
+  //   }));
+  // };
+
+  // handleIncrementBad = () => {
+  //   this.setState(state => ({
+  //     bad: state.bad + 1,
+  //   }));
+  // };
 
   countTotalFeedback = () => {
     this.total = this.state.bad + this.state.neutral + this.state.good;
@@ -56,13 +64,8 @@ export class App extends Component {
           color: '#010101',
         }}
       >
-        <Section title="Please leave feedback">
-          <FeedbackOptions
-            handleIncrementGood={this.handleIncrementGood}
-            handleIncrementBad={this.handleIncrementBad}
-            handleIncrementNeutral={this.handleIncrementNeutral}
-          ></FeedbackOptions>
-          {/* <FeedbackOptions options={} onLeaveFeedback={}></FeedbackOptions> */}
+        <Section title="Please leave feedback">          
+          <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={this.onLeaveFeedback}></FeedbackOptions>
           <Statistics
             good={this.state.good}
             neutral={this.state.neutral}
