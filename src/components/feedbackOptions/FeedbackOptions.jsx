@@ -1,12 +1,13 @@
 import css from './FeedbackOptions.module.css';
+import PropTypes from 'prop-types';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
-  function onMouseDown(e) {
+  const onMouseDown = e => {
     e.target.style.backgroundColor = 'blue';
-  }
-  function onMouseUp(e) {
+  };
+  const onMouseUp = e => {
     e.target.style.backgroundColor = 'white';
-  }
+  };
   return (
     <ul className={css.feedbackList}>
       {options.map(option => (
@@ -25,3 +26,8 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
     </ul>
   );
 }
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onLeaveFeedback: PropTypes.func.isRequired,
+};
