@@ -1,3 +1,5 @@
+import css from './Statistics.module.css';
+
 export default function Statistics({
   good,
   neutral,
@@ -6,17 +8,22 @@ export default function Statistics({
   positivePercentage,
 }) {
   return (
-    <div>
-      <h2>Statictics</h2>     
-      <ul>
-        <li>Good: {good ? good : 0}</li>
-        <li>Neutral: {neutral ? neutral : 0}</li>
-        <li>Bad: {bad ? bad : 0}</li>
-        <li>Total: {total ? total : 0}</li>
-        <li>
-          Positive feedback: {positivePercentage ? positivePercentage : 0}%
-        </li>
-      </ul>
+    <div className={css.statistics}>
+      <h2 className={css.statisticsTitle}>Statictics</h2>
+      {total ? (
+        <ul className={css.statisticsList}>
+          <li className={css.statisticsItem}>Good: {good ? good : 0}</li>
+          <li className={css.statisticsItem}>
+            Neutral: {neutral ? neutral : 0}
+          </li>
+          <li className={css.statisticsItem}>Bad: {bad ? bad : 0}</li>
+          <li className={css.statisticsItem}>Total: {total ? total : 0}</li>
+          <li className={css.statisticsItem}>
+            Positive feedback:{' '}
+            {positivePercentage ? Math.round(positivePercentage) : 0}%
+          </li>
+        </ul>
+      ) : null}
     </div>
   );
 }
