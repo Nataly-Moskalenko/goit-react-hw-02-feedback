@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Section({ title, children }) {
   return (
-    <section className={css.feedbackSection}>
+    <section className={css.section}>
       <h2>{title}</h2>
       {children}
     </section>

@@ -20,14 +20,16 @@ export class App extends Component {
   };
 
   countTotalFeedback = () => {
-    this.total = this.state.bad + this.state.neutral + this.state.good;
+    const { good, neutral, bad } = this.state;
+    this.total = good + neutral + bad;
     return this.total;
   };
 
   countPositiveFeedbackPercentage = () => {
+    const { good, neutral, bad } = this.state;
     this.positivePercentage =
-      (this.state.good /
-        (this.state.bad + this.state.neutral + this.state.good)) *
+      (good /
+        (good + neutral + bad)) *
       100;
     return this.positivePercentage;
   };
@@ -37,8 +39,7 @@ export class App extends Component {
       <div
         style={{
           height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
+          padding: '80px 40px 40px',          
           fontSize: 40,
           color: '#010101',
         }}
@@ -48,6 +49,8 @@ export class App extends Component {
             options={['good', 'neutral', 'bad']}
             onLeaveFeedback={this.onLeaveFeedback}
           ></FeedbackOptions>
+        </Section>
+        <Section title="Statictics">
           <Statistics
             good={this.state.good}
             neutral={this.state.neutral}
@@ -55,11 +58,11 @@ export class App extends Component {
             total={this.countTotalFeedback()}
             positivePercentage={this.countPositiveFeedbackPercentage()}
           ></Statistics>
-          <Notification
-            total={this.total}
-            message="There is no feedback"
-          ></Notification>
         </Section>
+        <Notification
+          total={this.total}
+          message="There is no feedback"
+        ></Notification>
       </div>
     );
   }
