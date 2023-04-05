@@ -6,5 +6,5 @@ export default function Notification({ message, total }) {
 
 Notification.propTypes = {
   message: PropTypes.string.isRequired,
-  total: PropTypes.number,
+  total: PropTypes.number.isRequired,
 };
